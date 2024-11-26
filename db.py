@@ -57,7 +57,7 @@ class Database:
         try:
             auth = request.authorization
             username = auth.username
-            password = auth.password
+            password = hashlib.sha256(auth.password.encode('utf-8')).hexdigest()
         except:
             return 401
         try:
